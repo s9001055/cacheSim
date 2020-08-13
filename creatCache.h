@@ -1,5 +1,5 @@
-#ifndef INITCACHE_H
-#define INITCACHE_H
+#ifndef CREATCACHE_H
+#define CREATCACHE_H
 
 #include <stdio.h>
 #include <stdlib.h>
