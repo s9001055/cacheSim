@@ -5,13 +5,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct cache_t{
+typedef struct cacheInfo_t{
 	unsigned int lineSize;		/* block size		*/
 	unsigned int associat;		/* cache assocativity	*/
-	unsigned int dataSize;		/* data size		*/
+	unsigned int dataSize;		/* total cache size	*/
 	unsigned int replacePolicy;	/* replacement policy	*/
 	unsigned int missPenalty;	/* miss penalty		*/
 	unsigned int writeAlloc;	/* write allocate	*/
+	unsigned int writeBack;		/* 1 = wirte back, 0 = write through	*/
+}cacheInfo_t;
+
+typedef struct cache_t{
+	unsigned int valid;	/* valid bit	*/
+	unsigned int dirty;	/* dirty bit	*/
+	unsigned int tag;
 }cache_t;
 
 typedef struct {
@@ -21,8 +28,12 @@ typedef struct {
 }trace_t;
 
 
-extern cache_t cache;
+extern cacheInfo_t cacheInfo;
+extern cache_t *cache;
+extern unsigned int numOfBlock;
+
 
 void initCache(char*);
+void creatCache();
 
 #endif
