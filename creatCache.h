@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define byteOffset 2
+
 typedef struct cacheInfo_t{
 	unsigned int lineSize;		/* block size		*/
 	unsigned int associat;		/* cache assocativity	*/
@@ -16,10 +18,12 @@ typedef struct cacheInfo_t{
 }cacheInfo_t;
 
 typedef struct cache_t{
+	unsigned int lruBit;
 	unsigned int valid;	/* valid bit	*/
 	unsigned int dirty;	/* dirty bit	*/
 	unsigned int tag;
 }cache_t;
+
 
 typedef struct {
 	char accessType;		/* l = load, s = store			*/
@@ -29,11 +33,13 @@ typedef struct {
 
 
 extern cacheInfo_t cacheInfo;
-extern cache_t *cache;
+extern cache_t *cacheD;
+extern cache_t **cacheN;
 extern unsigned int numOfBlock;
-
+extern unsigned int blockOffset;
+extern unsigned int addressTag;
 
 void initCache(char*);
-void creatCache();
+unsigned int _log2(unsigned int);
 
 #endif
