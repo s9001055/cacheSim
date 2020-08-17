@@ -1,4 +1,6 @@
 #include "creatCache.h"
+#include "traceInput.h"
+
 
 int main(int argc, char **argv)
 {
@@ -11,16 +13,12 @@ int main(int argc, char **argv)
 		return 0;
 	}
 	
-	FILE *TraceFp;
 	char *confPath = argv[1];
 	char *tracePath = argv[2];
 	
 	initCache(confPath);
 
-	TraceFp = fopen(tracePath, "r");
-	
-	fclose(TraceFp);
-
+	traceInput(tracePath);
 
 
 

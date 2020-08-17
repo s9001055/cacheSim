@@ -24,20 +24,11 @@ typedef struct cache_t{
 	unsigned int tag;
 }cache_t;
 
-
-typedef struct {
-	char accessType;		/* l = load, s = store			*/
-	unsigned int address;		/* 32 bit address			*/
-	unsigned int lastMEMAccess;	/* Instructions since last mem access	*/
-}trace_t;
-
-
 extern cacheInfo_t cacheInfo;
 extern cache_t *cacheD;
 extern cache_t **cacheN;
 extern unsigned int numOfBlock;
 extern unsigned int blockOffset;
-extern unsigned int addressTag;
 
 void initCache(char*);
 unsigned int _log2(unsigned int);

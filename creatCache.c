@@ -57,4 +57,3 @@ unsigned int _log2(unsigned int numBlock)
 
 	return bit;
 }
-
